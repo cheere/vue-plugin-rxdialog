@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="text-align:center">
     <h1>one</h1>
     <div @click="onPush" class="cursor"> page push </div>
     <hr>

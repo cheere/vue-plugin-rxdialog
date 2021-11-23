@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="rxdialog_no_select">
     <router-view></router-view>
   </div>
 </template>

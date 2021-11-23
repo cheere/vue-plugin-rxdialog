@@ -1,22 +1,24 @@
 <template>
-  <div>
-    <div class="alert">
-      <ul>
-        <li v-for="(t,i) in alertArray" :key="'alert-'+i" class="cursor"
-          @click="t.click"
-        > {{i}} - {{ t.name }}</li>
-      </ul>
-      <div>
-        <div @click="alertClose" class="cursor">close Alert -- 看看是否影响 操作</div>
+  <div class="demo">
+    <div>
+      <div class="alert">
+        <ul>
+          <li v-for="(t,i) in alertArray" :key="'alert-'+i" class="cursor"
+            @click="t.click"
+          > {{i}} - {{ t.name }}</li>
+        </ul>
+        <div>
+          <div @click="alertClose" class="cursor">close Alert -- 看看是否影响 操作</div>
+        </div>
       </div>
-    </div>
-    <hr>
-    <div class="toast">
-      <ul>
-        <li v-for="(t,i) in toastArray" :key="'toast-'+i" class="cursor"
-          @click="t.click"
-        > {{i}} - {{ t.name }}</li>
-      </ul>
+      <hr>
+      <div class="toast">
+        <ul>
+          <li v-for="(t,i) in toastArray" :key="'toast-'+i" class="cursor"
+            @click="t.click"
+          > {{i}} - {{ t.name }}</li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
@@ -211,3 +213,19 @@ export default {
   }
 }
 </script>
+
+<style>
+.demo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+}
+
+ul li {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background: lightcoral;
+  border-radius: 4px;
+}
+</style>

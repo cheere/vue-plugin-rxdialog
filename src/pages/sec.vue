@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="text-align:center">
     <h1>sec</h1>
     <div @click="onPop" class="cursor"> page pop </div>
     <hr>
