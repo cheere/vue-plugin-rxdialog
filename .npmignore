@@ -1,0 +1,12 @@
+.vscode
+build
+dist
+node_modules
+public
+scripts
+index.d.ts
+babel.config.js
+.browserslistrc
+.editorconfig
+yarn.lock
+package-lock.json

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./lib/rxdialog.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <style>
+    #app { text-align: center; }
+    .cursor {  cursor: pointer; }
+    .tip { font-weight: bold; font-size: 18px; padding-top: 15px;}
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    dialog
+    <hr>
+    <button onclick="toAlert()"> 普通 button 点击 - alert</button>
+    <hr>
+    <compp></compp>
+  </div>
+
+
+  <template id='comp'>
+    <div class="cursor">
+      <div>
+        <div class="tip">alert</div>
+        <div @click="showAlertString">show alert - string</div>
+        <div @click="showAlertObject">show alert - object</div>
+      </div>
+
+      <div>
+        <div class="tip">toast</div>
+        <div @click="showToastString">show toast - string</div>
+        <div @click="showToastObject">show toast - object</div>
+        <div @click="showToastObjectWarn">show toast - object - warn</div>
+        <div @click="showToastObjectSucc">show toast - object - succ</div>
+        <div @click="showToastObjectFail">show toast - object - fail</div>
+      </div>
+    </div>
+  </template>
+
+  <!-- 不能放到head 里面 -->
+  <script src="./lib/rxdialog.js"></script>
+
+  <script>
+    function toAlert() {
+      console.log('toAlert rxdialog=', rxdialog)
+      window.Vue.$rxdialog.alert.show('hello')
+    }
+  </script>
+
+  <script>
+    const app = new Vue({
+      el: '#app',
+      components: {
+        compp: {
+          template: '#comp',
+          methods: {
+            showAlertString() {
+              console.log('showAlertString rxdialog=', rxdialog)
+              console.log('this=', this)
+              this.$rxdialog.alert.show('alert - string - `hello world`')
+            },
+            showAlertObject() {
+              this.$rxdialog.alert.show({
+                title: 'alert-title',
+                content: 'alert-content',
+                cancelText: 'a-cancel',
+                buttonText: 'a-ok',
+                onShow() {
+                  console.log('Plugin alert object onShow')
+                },
+                onHide() {
+                  console.log('Plugin alert object onHide')
+                },
+                onCancle() {
+                  console.log('Plugin alert object --- button -- cancel')
+                },
+                onConfirm() {
+                  console.log('Plugin alert object --- button -- confirm')
+                },
+              })
+            },
+            showToastString() {
+              this.$rxdialog.toast.show('toast - string - `hello world`')
+            },
+            showToastObject() {
+              const options = {
+                time: 3000,
+                text: 'hello world !!!',
+              }
+              this.showToastConfig(options)
+            },
+            showToastObjectWarn() {
+              const options = {
+                type: 'warn',
+                time: 1000,
+                text: 'hello world !!!',
+              }
+              this.showToastConfig(options)
+            },
+            showToastObjectSucc() {
+              const options = {
+                type: 'succ',
+                time: 1500,
+                text: 'hello world !!!',
+              }
+              this.showToastConfig(options)
+            },
+            showToastObjectFail() {
+              const options = {
+                type: 'fail',
+                time: 1100,
+                text: 'hello world !!!',
+              }
+              this.showToastConfig(options)
+            },
+            showToastConfig(options) {
+              if (options && typeof options === 'object') {
+                options.onHide = () => {
+                  console.log('-- Plugin toast onHide --')
+                }
+                this.$rxdialog.toast.show(options)
+              }
+            }
+          }
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

@@ -1,24 +1,84 @@
 # vue-plugin-rxdialog
 
-## Project setup
-```
-yarn install
+UI Components built on Vue.
+
+## Install
+Using npm to install:
+
+```sh
+  npm install vue-plugin-rxdialog --save-dev
 ```
 
-### Compiles and hot-reloads for development
-```
-yarn serve
+Using yarn or pnpm:
+```sh
+  # with yarn
+  yarn add vue-plugin-rxdialog
+
+  # with pnpm
+  pnpm add vue-plugin-rxdialog
 ```
 
-### Compiles and minifies for production
-```
-yarn build
+## Quickstart
+```js
+  import RxdialogPlugin from 'vue-plugin-rxdialog'
+  import 'vue-plugin-rxdialog/lib/vue-plugin-rxdialog.css'
+  Vue.use(RxdialogPlugin)
+
+  // or
+  import { alert, toast } from 'vue-plugin-rxdialog'
+  import 'vue-plugin-rxdialog/lib/vue-plugin-rxdialog.css'
+  Vue.use(alert)
+  Vue.use(toast)
 ```
 
-### Lints and fixes files
+
+## Usage
+alert
+```js
+  methods: {
+    showAlert () {
+      this.$rxdialog.alert.show('hello world!')
+    },
+    showAlert2 () {
+      this.$rxdialog.alert.show({
+        title: 'title - text',
+        content: 'content',
+        cancelText: 'cancel',
+        buttonText: 'ok',
+        onShow() {
+          console.log('onShow')
+        },
+        onHide() {
+          console.log('onHide')
+        },
+        onCancle() {
+          console.log('onCancel')
+        },
+        onConfirm() {
+          console.log('onConfirm')
+        },
+      })
+    }
+  }
 ```
-yarn lint
+toast
+```js
+  methods: {
+    showToast () {
+      this.$rxdialog.toast.show('toast')
+    },
+    showToast2 () {
+      this.$rxdialog.toast.show({
+        type: 'fail', // text warn succ fail
+        time: 1000,
+        text: 'hello world !!!',
+        onHide() {
+          console.log('-- Plugin toast onHide --')
+        }
+      })
+    }
+  }
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+# License
+[MIT](https://github.com/cheere/vue-plugin-rxdialog/blob/main/LICENSE)
