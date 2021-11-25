@@ -8,5 +8,7 @@ index.d.ts
 babel.config.js
 .browserslistrc
 .editorconfig
+babel.config.js
+vue.config.js
 yarn.lock
 package-lock.json

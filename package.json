@@ -1,6 +1,6 @@
 {
   "name": "vue-plugin-rxdialog",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "UI Components built on Vue.",
   "private": false,
   "scripts": {
@@ -15,10 +15,7 @@
   "module": "lib/rxdialog.js",
   "unpkg": "lib/rxdialog.js",
   "jsdelivr": "lib/rxdialog.js",
-  "files": [
-    "lib/rxdialog.js",
-    "src"
-  ],
+  "author": "srxboys",
   "repository": {
     "type": "git",
     "url": "https://github.com/cheere/vue-plugin-rxdialog.git"
